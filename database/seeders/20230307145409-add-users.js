@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-'use strict';
-const bcrypt = require('bcryptjs');
+"use strict";
+const bcrypt = require("bcryptjs");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-    async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -12,20 +12,30 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
-        queryInterface.bulkInsert('Users', [
-            {username: 'abc123', password: await bcrypt.hashSync('password', 10)},
-            {username: 'xyz123', password: await bcrypt.hashSync('password', 10)},
-        ], {});
-    },
+     */
+    queryInterface.bulkInsert(
+      "Users",
+      [
+        {
+          email: "abc@mail.com",
+          password: await bcrypt.hashSync("password", 10),
+        },
+        {
+          email: "ash@mail.com",
+          password: await bcrypt.hashSync("password", 10),
+        },
+      ],
+      {}
+    );
+  },
 
-    async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-        queryInterface.bulkDelete('Users', null, {});
-    }
+    queryInterface.bulkDelete("Users", null, {});
+  },
 };
